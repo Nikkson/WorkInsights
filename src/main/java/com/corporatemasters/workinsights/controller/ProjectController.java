@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -28,6 +29,16 @@ public class ProjectController {
     }
     @PostMapping("/projects/add")
     public String addProject(@ModelAttribute Project project) {
+        projectService.save(project);
+        return "redirect:/projects";
+    }
+    @GetMapping("/projects/edit/{id}")
+    public String editProjectForm(@PathVariable Long id, Model model) {
+        model.addAttribute("project", projectService.findById(id));
+        return "projectEdit";
+    }
+    @PostMapping("/projects/edit/{id}")
+    public String editProject(@ModelAttribute Project project) {
         projectService.save(project);
         return "redirect:/projects";
     }
