@@ -42,4 +42,9 @@ public class ProjectController {
         projectService.save(project);
         return "redirect:/projects";
     }
+    @GetMapping("/projects/delete/{id}")
+    public String deleteProject(@PathVariable Long id){
+        projectService.delete(id);
+        return "redirect:/projects";
+    }
 }
