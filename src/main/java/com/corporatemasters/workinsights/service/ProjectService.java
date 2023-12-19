@@ -22,4 +22,7 @@ public class ProjectService {
     public void save(Project project) {
         projectRepository.save(project);
     }
+    public void delete(Long id) {
+        projectRepository.deleteById(id);
+    }
 }
