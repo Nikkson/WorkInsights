@@ -14,6 +14,11 @@ public class EmployeeService {
     public List<Employee> findAll() {
         return employeeRepository.findAll();
     }
+    public Employee findById(Long id) {
+        return employeeRepository
+                .findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid ID: " + id));
+    }
     public void save(Employee employee) {
         employeeRepository.save(employee);
     }
