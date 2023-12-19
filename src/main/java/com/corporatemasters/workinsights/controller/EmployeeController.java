@@ -42,4 +42,9 @@ public class EmployeeController {
         employeeService.save(employee);
         return "redirect:/employees";
     }
+    @GetMapping("/employees/delete/{id}")
+    public String deleteEmployee(@PathVariable Long id){
+        employeeService.delete(id);
+        return "redirect:/employees";
+    }
 }
