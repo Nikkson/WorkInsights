@@ -22,4 +22,7 @@ public class EmployeeService {
     public void save(Employee employee) {
         employeeRepository.save(employee);
     }
+    public void delete(Long id) {
+        employeeRepository.deleteById(id);
+    }
 }
