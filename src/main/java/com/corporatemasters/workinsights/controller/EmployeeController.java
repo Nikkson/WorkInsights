@@ -38,7 +38,7 @@ public class EmployeeController {
         return "employeeEdit";
     }
     @PostMapping("/employees/edit/{id}")
-    public String editEmployee(@PathVariable Long id, @ModelAttribute Employee employee) {
+    public String editEmployee(@ModelAttribute Employee employee) {
         employeeService.save(employee);
         return "redirect:/employees";
     }
