@@ -32,6 +32,11 @@ public class EmployeeController {
         employeeService.save(employee);
         return "redirect:/employees";
     }
+    @GetMapping("/employees/{id}")
+    public String viewEmployee(@PathVariable Long id, Model model) {
+        model.addAttribute("employee", employeeService.findById(id));
+        return "employeeDetails";
+    }
     @GetMapping("/employees/edit/{id}")
     public String editEmployeeForm(@PathVariable Long id, Model model) {
         model.addAttribute("employee", employeeService.findById(id));
