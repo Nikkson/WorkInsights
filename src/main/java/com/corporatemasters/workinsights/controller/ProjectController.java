@@ -32,6 +32,11 @@ public class ProjectController {
         projectService.save(project);
         return "redirect:/projects";
     }
+    @GetMapping("/projects/{id}")
+    public String viewProject(@PathVariable Long id, Model model) {
+        model.addAttribute("project", projectService.findById(id));
+        return "projectDetails";
+    }
     @GetMapping("/projects/edit/{id}")
     public String editProjectForm(@PathVariable Long id, Model model) {
         model.addAttribute("project", projectService.findById(id));
