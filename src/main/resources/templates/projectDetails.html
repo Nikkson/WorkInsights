@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Project details</title>
+</head>
+<body>
+    <h1>Project details</h1>
+    <div>
+        <label th:text="'ID: '+${project.id}"></label>
+    </div>
+    <div>
+        <label th:text="'Name: '+${project.name}"></label>
+    </div>
+    <div>
+        <label th:text="'Description: '+${project.description}"></label>
+    </div>
+    <div>
+        <label th:text="'Customer: '+${project.customer}"></label>
+    </div>
+</body>
+</html>
