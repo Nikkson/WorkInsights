@@ -29,6 +29,9 @@ public class CSVReader {
             } else {
                 endDate = DateUtils.parseDate(lineArr[3], DATE_FORMATS);
             }
+            if (endDate!=null && endDate.before(startDate)) {
+                throw new IllegalArgumentException("One or more end dates are before the start dates!");
+            }
             return new EmployeeProjectDTO(employeeId, projectId, startDate, endDate);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Invalid ID format!");
