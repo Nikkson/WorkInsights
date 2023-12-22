@@ -1,9 +1,7 @@
 package com.corporatemasters.workinsights.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Employee {
@@ -14,6 +12,8 @@ public class Employee {
     private String department;
     private String position;
     private double salary;
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    private Set<EmployeeProject> employeeProjects;
 
     public Employee() {
     }
@@ -64,5 +64,13 @@ public class Employee {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public Set<EmployeeProject> getEmployeeProjects() {
+        return employeeProjects;
+    }
+
+    public void setEmployeeProjects(Set<EmployeeProject> employeeProjects) {
+        this.employeeProjects = employeeProjects;
     }
 }
