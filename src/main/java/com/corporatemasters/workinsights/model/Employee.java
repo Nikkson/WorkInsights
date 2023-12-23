@@ -1,6 +1,8 @@
 package com.corporatemasters.workinsights.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
 import java.util.Set;
 
 @Entity
@@ -8,8 +10,11 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @NotBlank(message = "Name cannot be empty!")
     private String name;
+    @NotBlank(message = "Department cannot be empty!")
     private String department;
+    @NotBlank(message = "Position cannot be empty!")
     private String position;
     private double salary;
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
