@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Common projects statistics</title>
+</head>
+<body>
+    <div>
+        Employee ID: <span th:text="${employee1}"></span>
+    </div>
+    <div>AND</div>
+    <div>
+        Employee ID: <span th:text="${employee2}"></span>
+    </div>
+    <div>
+        Total days: <span th:text="${total}"></span>
+    </div>
+    <div>
+        <ul>
+            <li th:each="key: ${map.keySet()}">
+                Project ID: <span th:text="${key}"></span> - <span th:text="${map.get(key)}"></span> days
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
