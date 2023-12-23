@@ -14,6 +14,10 @@ import java.util.Set;
 public class StatisticsController {
     @Autowired
     StatisticsService statisticsService;
+    @GetMapping("/statistics")
+    public String listStatistics(){
+        return "statistics";
+    }
     @GetMapping("/statistics/commonProjects")
     public String getCommonProjectsStatistics(Model model) {
         Map.Entry<Set<Long>, HashMap<Long, Long>> best = statisticsService.getBestPair();

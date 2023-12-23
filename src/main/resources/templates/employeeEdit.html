@@ -6,6 +6,12 @@
 </head>
 <body>
     <h1 th:text="${employee.id} ? 'Edit employee' : 'New employee'"></h1>
+    <div>
+        <a href="/">Home</a>
+    </div>
+    <div>
+        <a href="/employees">Back</a>
+    </div>
     <form th:action="${employee.id} ? @{/employees/edit/{id}(id=${employee.id})} : @{/employees/add}" th:object="${employee}" method="post">
         <div>
             <label>Name</label>
