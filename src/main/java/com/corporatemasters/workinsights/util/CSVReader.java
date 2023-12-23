@@ -25,7 +25,7 @@ public class CSVReader {
             Date startDate = DateUtils.parseDate(lineArr[2].strip(),DATE_FORMATS);
             Date endDate;
             if (lineArr[3].strip().equalsIgnoreCase("null")) {
-                endDate = null;
+                endDate = new Date();
             } else {
                 endDate = DateUtils.parseDate(lineArr[3], DATE_FORMATS);
             }
