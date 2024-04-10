@@ -40,12 +40,12 @@ public class ProjectController {
         return "redirect:/projects";
     }
     @GetMapping("/projects/{id}")
-    public String viewProject(@PathVariable Long id, Model model) {
+    public String viewProject(@PathVariable long id, Model model) {
         model.addAttribute("project", projectService.findById(id));
         return "projectDetails";
     }
     @GetMapping("/projects/edit/{id}")
-    public String editProjectForm(@PathVariable Long id, Model model) {
+    public String editProjectForm(@PathVariable long id, Model model) {
         model.addAttribute("project", projectService.findById(id));
         return "projectEdit";
     }
@@ -55,7 +55,7 @@ public class ProjectController {
         return "redirect:/projects";
     }
     @GetMapping("/projects/delete/{id}")
-    public String deleteProject(@PathVariable Long id){
+    public String deleteProject(@PathVariable long id){
         projectService.delete(id);
         return "redirect:/projects";
     }

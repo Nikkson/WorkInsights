@@ -14,7 +14,7 @@ public class EmployeeService {
     public List<Employee> findAll() {
         return employeeRepository.findAll();
     }
-    public Employee findById(Long id) {
+    public Employee findById(long id) {
         return employeeRepository
                 .findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid ID: " + id));
@@ -22,7 +22,7 @@ public class EmployeeService {
     public void save(Employee employee) {
         employeeRepository.save(employee);
     }
-    public void delete(Long id) {
+    public void delete(long id) {
         employeeRepository.deleteById(id);
     }
 }

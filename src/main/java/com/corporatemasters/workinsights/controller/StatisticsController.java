@@ -21,10 +21,10 @@ public class StatisticsController {
     @GetMapping("/statistics/commonProjects")
     public String getCommonProjectsStatistics(Model model) {
         Map.Entry<Set<Long>, HashMap<Long, Long>> best = statisticsService.getBestPair();
-        Long employeeId1 = best.getKey().stream().toList().get(0);
-        Long employeeId2 = best.getKey().stream().toList().get(1);
+        long employeeId1 = best.getKey().stream().toList().get(0);
+        long employeeId2 = best.getKey().stream().toList().get(1);
         HashMap<Long,Long> projectsDays = best.getValue();
-        Long totalDays = 0L;
+        long totalDays = 0L;
         for (Map.Entry<Long,Long> entry : projectsDays.entrySet()) {
             totalDays+= entry.getValue();
         }

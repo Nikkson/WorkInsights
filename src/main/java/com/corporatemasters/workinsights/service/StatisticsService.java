@@ -18,11 +18,11 @@ public class StatisticsService {
         HashMap<Set<Long>,HashMap<Long,Long>> statistics = new HashMap<>();
         List<EmployeeProject> employeeProjects = employeeProjectRepository.findAll();
         for (EmployeeProject employeeProject : employeeProjects) {
-            Long currentEmployeeId = employeeProject.getEmployee().getId();
+            long currentEmployeeId = employeeProject.getEmployee().getId();
             List<EmployeeProject> overlappingEmployeeProjects = findAllOverlapping(employeeProject);
             for (EmployeeProject overlappingEmployeeProject : overlappingEmployeeProjects) {
-                Long checkedEmployeeId = overlappingEmployeeProject.getEmployee().getId();
-                Long checkedProjectId = overlappingEmployeeProject.getProject().getId();
+                long checkedEmployeeId = overlappingEmployeeProject.getEmployee().getId();
+                long checkedProjectId = overlappingEmployeeProject.getProject().getId();
                 Date startDate;
                 Date endDate;
                 if(employeeProject.getStartDate().compareTo(overlappingEmployeeProject.getStartDate()) > 0) {
@@ -35,8 +35,8 @@ public class StatisticsService {
                 } else {
                     endDate = employeeProject.getEndDate();
                 }
-                Long diff = endDate.getTime() - startDate.getTime();
-                Long days = TimeUnit.MILLISECONDS.toDays(diff);
+                long diff = endDate.getTime() - startDate.getTime();
+                long days = TimeUnit.MILLISECONDS.toDays(diff);
                 Set<Long> employeePair = new HashSet<>(2);
                 employeePair.add(currentEmployeeId);
                 employeePair.add(checkedEmployeeId);
@@ -60,9 +60,9 @@ public class StatisticsService {
     public Map.Entry<Set<Long>,HashMap<Long,Long>> getBestPair() {
         HashMap<Set<Long>,HashMap<Long,Long>> statistics = getStatistics();
         Map.Entry<Set<Long>,HashMap<Long,Long>> bestEntry = null;
-        Long total = 0L;
+        long total = 0L;
         for (Map.Entry<Set<Long>,HashMap<Long,Long>> employeePair : statistics.entrySet()) {
-            Long currentTotal = 0L;
+            long currentTotal = 0L;
             for (Map.Entry<Long,Long> daysOnProject : employeePair.getValue().entrySet()) {
                 currentTotal+=daysOnProject.getValue();
             }

@@ -40,12 +40,12 @@ public class EmployeeController {
         return "redirect:/employees";
     }
     @GetMapping("/employees/{id}")
-    public String viewEmployee(@PathVariable Long id, Model model) {
+    public String viewEmployee(@PathVariable long id, Model model) {
         model.addAttribute("employee", employeeService.findById(id));
         return "employeeDetails";
     }
     @GetMapping("/employees/edit/{id}")
-    public String editEmployeeForm(@PathVariable Long id, Model model) {
+    public String editEmployeeForm(@PathVariable long id, Model model) {
         model.addAttribute("employee", employeeService.findById(id));
         return "employeeEdit";
     }
@@ -55,7 +55,7 @@ public class EmployeeController {
         return "redirect:/employees";
     }
     @GetMapping("/employees/delete/{id}")
-    public String deleteEmployee(@PathVariable Long id){
+    public String deleteEmployee(@PathVariable long id){
         employeeService.delete(id);
         return "redirect:/employees";
     }

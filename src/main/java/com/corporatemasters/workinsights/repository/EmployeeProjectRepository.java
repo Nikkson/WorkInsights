@@ -15,9 +15,9 @@ public interface EmployeeProjectRepository extends JpaRepository<EmployeeProject
     @Transactional
     @Modifying
     @Query(value = "insert into employee_project (employee_id, project_id, start_date, end_date) values (:employeeId, :projectId, :startDate, :endDate)", nativeQuery = true)
-    void save(@Param("employeeId")Long employeeId, @Param("projectId")Long projectId, @Param("startDate") Date startDate, @Param("endDate") Date endDate);
+    void save(@Param("employeeId")long employeeId, @Param("projectId")long projectId, @Param("startDate") Date startDate, @Param("endDate") Date endDate);
     @Query(value = "select case when count(id)> 0 then 'True' else 'False' end from employee_project ep where employee_id=(:employeeId) and project_id=(:projectId) and start_date < (:endDate) and end_date > (:startDate)", nativeQuery = true)
-    boolean exists(@Param("employeeId")Long employeeId, @Param("projectId")Long projectId, @Param("startDate") Date startDate, @Param("endDate") Date endDate);
+    boolean exists(@Param("employeeId")long employeeId, @Param("projectId")long projectId, @Param("startDate") Date startDate, @Param("endDate") Date endDate);
     @Query(value = "select * from employee_project ep where employee_id!=(:employeeId) and project_id=(:projectId) and start_date < (:endDate) and end_date > (:startDate)", nativeQuery = true)
-    List<EmployeeProject> findAllOverlapping(@Param("employeeId")Long employeeId, @Param("projectId")Long projectId, @Param("startDate") Date startDate, @Param("endDate") Date endDate);
+    List<EmployeeProject> findAllOverlapping(@Param("employeeId")long employeeId, @Param("projectId")long projectId, @Param("startDate") Date startDate, @Param("endDate") Date endDate);
 }
